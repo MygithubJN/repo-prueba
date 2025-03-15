@@ -1,0 +1,50 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: labdb
+    ports:
+      - "5433:5432"  # Puerto cambiado de 5432 a 5433
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: labdb
+    ports:
+      - "3307:3306"  # Puerto cambiado de 3306 a 3307
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo_db
+    ports:
+      - "27020:27017"  # Puerto cambiado de 27017 a 27020
+    volumes:
+      - mongo_data:/data/db
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    environment:
+      JENKINS_OPTS: --prefix=/jenkins
+    ports:
+      - "8081:8080"  # Puerto cambiado de 8080 a 8081
+      - "50001:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+
+volumes:
+  postgres_data:
+  mysql_data:
+  mongo_data:
+  jenkins_home:
+
