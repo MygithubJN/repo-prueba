@@ -1,19 +1,16 @@
 pipeline {
     agent any
+
     stages {
-        stage('Build') {
+        stage('Clonar Repositorio') {
             steps {
-                echo 'Building the project...'
+                git url: 'https://github.com/tu-usuario/repo-prueba.git'
             }
         }
-        stage('Test') {
+        
+        stage('Mostrar Archivos Clonados') {
             steps {
-                echo 'Running tests...'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying the project...'
+                sh 'ls -al'
             }
         }
     }
