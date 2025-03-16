@@ -1,7 +1,6 @@
 pipeline {
     agent any
 
-<<<<<<< HEAD
     environment {
         // Configuración del repositorio Git
         GIT_REPO_URL = 'https://github.com/MygithubJN/repo-prueba'  // Cambia esto a la URL de tu repositorio Git
@@ -41,7 +40,7 @@ pipeline {
         }
     }
 }
-=======
+ 
     stages {
         stage('Obtener estado de contenedores Docker') {
             steps {
@@ -57,4 +56,4 @@ pipeline {
     }
 }
 
->>>>>>> 038c859 (Agregado Jenkinsfile con pipeline de Docker)
+ 
